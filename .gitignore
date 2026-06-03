@@ -1,0 +1,6 @@
+# Arquivos de credenciais e ambiente
+.env
+
+# Pastas de cache e ambiente virtual do Python
+__pycache__/
+.venv/

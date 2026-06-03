@@ -1,0 +1,24 @@
+# ==============================================================================
+# Dependências Obrigatórias - Global Solution 2026.1 - Mission Control AI
+# ==============================================================================
+
+# Renderização de painéis visuais com bordas, tabelas, markdown e cores no terminal
+rich==15.0.0
+
+# Gerenciamento do input do usuário com suporte a histórico de comandos (setas do teclado)
+prompt-toolkit==3.0.52
+
+# Geração automática do letreiro em ASCII art para a inicialização do sistema
+pyfiglet==1.0.4
+
+# Leitura segura e isolada das credenciais configuradas dentro do arquivo .env
+python-dotenv==1.2.2
+
+# Cliente oficial para comunicação com o modelo gpt-oss:120b via Ollama Cloud API
+ollama==0.6.2
+
+
+# --- BÔNUS: Novas bibliotecas para o diferencial do projeto ---
+rich-pyfiglet==2.0.1
+pandas==2.2.3
+matplotlib==3.9.2
