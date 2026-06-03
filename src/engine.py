@@ -195,13 +195,3 @@ class MissionEngine:
             return f"⚠️  Modo inválido. Use: /modo normal | /modo degradado | /modo critico"
         self.modo_simulacao = novo_modo
         return f"✅ Modo de simulação alterado para: {novo_modo.upper()}"
-    
-        return (
-            "🛠️ Implementação pendente.\n\n"
-            "Olá! A interface CLI está funcionando, mas a lógica\n"
-            "de análise ainda não foi conectada. O grupo precisa:\n\n"
-            " 1. Completar src/telemetria.py\n"
-            " 2. Completar src/alertas.py\n"
-            " 3. Escrever o system prompt em prompts/system_prompt.md\n"
-            " 4. Sobrescrever analyze() em src/engine.py"
-        )

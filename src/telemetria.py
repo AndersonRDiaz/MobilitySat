@@ -35,7 +35,7 @@ def coletar(modo: str = "normal") -> dict:
             "critico"   → falha grave em pelo menos um parâmetro
 
     Retorna um dicionário com todos os parâmetros + timestamp.
-    """
+    """  
 
     if modo == "normal":
         dados = {
@@ -79,12 +79,12 @@ def formatar_para_prompt(dados: dict) -> str:
     A IA precisa receber os dados de forma clara para analisá-los corretamente.
     """
     return f"""
-TELEMETRIA — MobilitySat GNSS | {dados['timestamp']}
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  Drift do Oscilador Atômico : {dados['drift_oscilador']} ns      (normal: 0–10 ns)
-  Sincronização Constelação  : {dados['sincronizacao']} %        (normal: ≥95%)
-  Precisão do Sinal L1/L5   : {dados['precisao_sinal']} m        (normal: ≤3 m)
-  Precisão da Efeméride     : {dados['precisao_efemeride']} m    (normal: ≤2 m)
-  Margem de Potência        : {dados['margem_potencia']} %       (normal: ≥20%)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-""".strip()
+            TELEMETRIA — MobilitySat GNSS | {dados['timestamp']}
+            ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            Drift do Oscilador Atômico : {dados['drift_oscilador']} ns      (normal: 0–10 ns)
+            Sincronização Constelação  : {dados['sincronizacao']} %        (normal: ≥95%)
+            Precisão do Sinal L1/L5   : {dados['precisao_sinal']} m        (normal: ≤3 m)
+            Precisão da Efeméride     : {dados['precisao_efemeride']} m    (normal: ≤2 m)
+            Margem de Potência        : {dados['margem_potencia']} %       (normal: ≥20%)
+            ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            """.strip()
