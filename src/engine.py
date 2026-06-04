@@ -1,18 +1,5 @@
-"""
-Motor de análise — MobilitySat Mission Control AI
-Este arquivo é o coração do sistema: conecta telemetria + alertas + IA generativa.
-
-Fluxo de cada análise:
-  1. Coletar dados simulados (src/telemetria.py)
-  2. Avaliar alertas com lógica Python (src/alertas.py)
-  3. Montar prompt com os dados reais
-  4. Enviar ao modelo via Ollama Cloud
-  5. Retornar resposta formatada
-"""
-
 import os
 from pathlib import Path
-
 from dotenv import load_dotenv
 from ollama import Client
 
@@ -20,53 +7,35 @@ from src import telemetria, alertas
 
 load_dotenv()
 
-# ─── Configuração do cliente Ollama Cloud ────────────────────────────────────
-# O Client precisa da URL da Ollama Cloud + sua API Key carregada do .env
-_api_key = os.environ.get("OLLAMA_API_KEY", "")
+TRILHA = "mobilitysat"
 
 client = Client(
     host="https://api.ollama.com",
-    headers={"Authorization": f"Bearer {_api_key}"},
+    headers={'Authorization': 'Bearer ' + os.environ.get('OLLAMA_API_KEY', '')}
 )
-
-TRILHA = "mobilitysat"
-MODELO = "gpt-oss:120b"
-
 
 # ─── Função de chamada ao LLM ────────────────────────────────────────────────
 
 def llm(prompt: str, system: str | None = None, max_tokens: int = 900, temperature: float = 0.3) -> str:
-    """
-    Envia um prompt ao modelo gpt-oss:120b via Ollama Cloud.
-
-    Por que temperature=0.3?
-    Valores baixos (próximos de 0) tornam a resposta mais determinística e consistente,
-    ideal para análise técnica onde queremos respostas estáveis.
-    """
+    """Envia um prompt ao modelo gpt-oss:120b via Ollama Cloud. """
     mensagens = []
     if system:
         mensagens.append({"role": "system", "content": system})
     mensagens.append({"role": "user", "content": prompt})
-
     try:
         resposta = client.chat(
-            model=MODELO,
-            messages=mensagens,
+            model="gpt-oss:120b", messages=mensagens,
             options={"num_predict": max_tokens, "temperature": temperature},
             stream=False,
         )
         return resposta["message"]["content"].strip()
-    except Exception as erro:
-        return f"⚠️  Erro ao consultar IA: {erro}"
+    except Exception as e:
+        return f"⚠️  Erro ao consultar IA: {e}"
 
 
 # ─── Carregamento do system prompt ───────────────────────────────────────────
-
 def _carregar_system_prompt() -> str:
-    """
-    Lê o system prompt do arquivo prompts/system_prompt.md.
-    O system prompt instrui a IA sobre seu papel, tom e formato de resposta.
-    """
+    """Lê o system prompt do arquivo prompts/system_prompt.md."""
     caminho = Path("prompts/system_prompt.md")
     if caminho.exists():
         return caminho.read_text(encoding="utf-8")
@@ -76,16 +45,10 @@ def _carregar_system_prompt() -> str:
         "Analise os dados de telemetria e explique o impacto terrestre de cada anomalia."
     )
 
-
-
 # ─── Classe principal ─────────────────────────────────────────────────────────
-
 class MissionEngine:
-    """
-    Motor central do Mission Control AI.
-    Mantém o modo de simulação atual e o histórico das últimas leituras.
-    """
-
+    """ Motor central do MobilitySat.
+    Mantém o modo de simulação atual e o histórico das últimas leituras. """
     def __init__(self):
         self.trilha = TRILHA
         self.system_prompt = _carregar_system_prompt()
@@ -94,16 +57,17 @@ class MissionEngine:
         self._dados_atuais: dict = {}
         self._resultado_alertas: dict = {}
 
+
     # ── Método obrigatório pelo enunciado ────────────────────────────────────
     def is_ready(self) -> bool:
         return True
 
+
     # ── Snapshot do status atual ─────────────────────────────────────────────
     def status_snapshot(self) -> str:
-        """
-        Retorna um texto formatado com a telemetria atual + alertas ativos.
-        Chamado pelo comando /status na CLI.
-        """
+        """ Retorna um texto formatado com a telemetria atual + alertas ativos. 
+        Chamado pelo comando /status na CLI. """
+
         dados = telemetria.coletar(self.modo_simulacao)
         resultado = alertas.avaliar(dados)
         self._dados_atuais = dados
@@ -187,6 +151,8 @@ class MissionEngine:
         # 4. Consultar o modelo (prompt, system=self.system_prompt)
         resposta = llm(prompt, system=self.system_prompt)
         return resposta
+    
+    
 
     # ── Troca de modo de simulação ───────────────────────────────────────────
     def _trocar_modo(self, novo_modo: str) -> str:

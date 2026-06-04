@@ -1,12 +1,3 @@
-"""
-Módulo de alertas — MobilitySat
-Contém as regras de decisão implementadas em Python (não delegadas à IA).
-
-Conceito importante: a lógica de "é crítico ou não" deve estar no código,
-não no prompt. A IA serve para EXPLICAR e CONTEXTUALIZAR, não para decidir.
-"""
-
-
 # ─── Thresholds (limites que disparam alertas) ────────────────────────────────
 
 THRESHOLDS = {

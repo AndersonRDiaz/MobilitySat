@@ -1,16 +1,19 @@
 # Mission Control AI - MobilitySat
 
 ## 👨‍🚀 Integrantes
-- Christian Diaz — RM 568324
-- Hanin Atwi – RM 567626 
-- Giulia Martins Ferrari – RM 567574 
+- Christian Raymundo Diaz - RM 568324 - 1CCPB
+- Hanin Atwi              - RM 567626 - 1CCPB
+- Giulia Martins Ferrari  - RM 567574 - 1CCPB 
 ---
 
-## 🛰️ Sobre o Projeto
-O Mission Control AI é um sistema autônomo de monitoramento telemétrico para a missão GNSS MobilitySat. Ele integra scripts Python de avaliação de thresholds matemáticos a um modelo de Inteligência Artificial generativa (Ollama Cloud `gpt-oss:120b`). A IA atua não como tomadora de decisão, mas como uma engenheira sênior (ARIA) que traduz falhas orbitais técnicas (como um *drift* de oscilador atômico) em impactos terrestres concretos, facilitando a tomada de decisão para operadores em solo.
+## 🛰️ Sobre o Projeto - O que o projeto faz
+1. O Mission Control AI é um sistema autônomo de monitoramento telemétrico para a missão GNSS MobilitySat. 
+2. Ele integra scripts Python de avaliação de thresholds matemáticos a um modelo de Inteligência Artificial generativa (Ollama Cloud `gpt-oss:120b`). 
+3. A IA atua não como tomadora de decisão, mas como uma engenheira sênior (ARIA) que traduz falhas orbitais técnicas (como um *drift* de oscilador atômico) em impactos terrestres concretos, facilitando a tomada de decisão para operadores em solo.
 
 ## 👤 Persona Atendida
-O sistema foi desenhado para **Engenheiros de Segmento Espacial e Operadores de Centro de Controle**. O objetivo é poupar a carga cognitiva destes profissionais durante anomalias e gerar relatórios imediatos sobre como a degradação do satélite afeta diretamente seus clientes finais (operadores de frotas e agricultores).
+O sistema foi desenhado para **Engenheiros de Segmento Espacial e Operadores de Centro de Controle**. 
+O objetivo é poupar a carga cognitiva destes profissionais durante anomalias e gerar relatórios imediatos sobre como a degradação do satélite afeta diretamente seus clientes finais (operadores de frotas e agricultores).
 
 ---
 
@@ -41,16 +44,21 @@ Operamos em um modelo de **Dado-como-serviço (DaaS) via Assinatura (SaaS)**. Cl
 
 1. Clone este repositório para a sua máquina local:
    `git clone https://github.com/seu-usuario/mission-control-ai.git`
+
 2. Acesse a pasta do projeto e crie o ambiente virtual:
    `python -m venv venv`
+
 3. Ative o ambiente virtual:
    - Windows: `venv\Scripts\activate`
    - Mac/Linux: `source venv/bin/activate`
+
 4. Instale as dependências com as versões fixadas:
    `pip install -r requirements.txt`
+
 5. Configure suas credenciais:
    - Copie o arquivo `.env.example` e renomeie para `.env`.
    - Adicione a sua chave da Ollama Cloud: `OLLAMA_API_KEY=sua_chave_aqui_sem_aspas`
+   
 6. Execute a aplicação:
    `python main.py`
 

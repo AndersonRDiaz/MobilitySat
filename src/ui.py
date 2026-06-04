@@ -11,22 +11,23 @@ from datetime import datetime
 
 console = Console()
 session = PromptSession(style=Style.from_dict({"prompt": "#06B6D4 bold"}))
+
 def show_banner():
     """Exibe banner ASCII colorido no início."""
-    banner = pyfiglet.figlet_format("Mission Control", font="ansi_shadow")
+    banner = pyfiglet.figlet_format("Mobility\nSat", font="ansi_shadow")
     console.print(Text(banner, style="bold #06B6D4"))
     console.print(Panel.fit(
         "Sistema de monitoramento e análise por IA generativa.\n"
         "Use /help para ver os comandos · /exit para sair.\n"
         "Modelo: gpt-oss:120b via Ollama Cloud",
-        title="◆ MISSION CONTROL", border_style="#06B6D4"
+        title="◆ MobilitySat", border_style="#06B6D4"
     ))
 
 
 def show_response(text):
     """Renderiza resposta da IA em painel com timestamp."""
     now = datetime.now().strftime("%H:%M")
-    console.print(Panel(text, title="◆ Mission Control",
+    console.print(Panel(text, title="◆ Mobility\nSat",
                         subtitle=now, border_style="#06B6D4"))
     
 
