@@ -80,7 +80,7 @@ Operamos em um modelo de **Dado-como-serviço (DaaS) via Assinatura (SaaS)**. Cl
 ---
 
 ## 🎬 Vídeo de Demonstração
-**[Assistir demonstração completa no YouTube]([https://youtu.be/--jc93-LMNk)**
+**[Assistir demonstração completa no YouTube]([https://youtu.be/--jc93-LMNk])**
 > *Privacidade configurada como "Não listado".*
 
 ---
