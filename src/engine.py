@@ -147,10 +147,11 @@ class MissionEngine:
             Responda de forma clara e objetiva. Conecte sempre a análise técnica ao impacto
             terrestre (frotas logísticas, agricultura de precisão, veículos autônomos).
             """.strip()
-
+        
         # 4. Consultar o modelo (prompt, system=self.system_prompt)
         resposta = llm(prompt, system=self.system_prompt)
         return resposta
+    
     
     
 

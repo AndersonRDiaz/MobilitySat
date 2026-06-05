@@ -13,22 +13,27 @@ console = Console()
 session = PromptSession(style=Style.from_dict({"prompt": "#06B6D4 bold"}))
 
 def show_banner():
-    """Exibe banner ASCII colorido no início."""
-    banner = pyfiglet.figlet_format("Mobility\nSat", font="ansi_shadow")
-    console.print(Text(banner, style="bold #06B6D4"))
+    """Exibe banner ASCII colorido mantendo a estrutura original."""
+    # Dividimos em partes para aplicar cores diferentes
+    parte1 = pyfiglet.figlet_format("MISSION CONTROL AI", font="ansi_shadow")
+    parte2 = pyfiglet.figlet_format("MOBILITY - SAT ", font="ansi_shadow")
+    
+    console.print(Text(parte1, style="bold #06B6D4")) # Ciano (Claude)
+    console.print(Text(parte2, style="bold #F8910B")) # Laranja (Claude)
+    
     console.print(Panel.fit(
         "Sistema de monitoramento e análise por IA generativa.\n"
         "Use /help para ver os comandos · /exit para sair.\n"
         "Modelo: gpt-oss:120b via Ollama Cloud",
-        title="◆ MobilitySat", border_style="#06B6D4"
+        title="◆ MobilitySat", border_style="#F8910B"
     ))
 
-
 def show_response(text):
-    """Renderiza resposta da IA em painel com timestamp."""
+    """Renderiza resposta da IA mantendo a estrutura original."""
     now = datetime.now().strftime("%H:%M")
+    # Mantemos o border_style laranja como você pediu
     console.print(Panel(text, title="◆ Mobility\nSat",
-                        subtitle=now, border_style="#06B6D4"))
+                        subtitle=now, border_style="#F8910B"))
     
 
 def run_cli(engine):

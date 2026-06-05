@@ -66,13 +66,16 @@ Operamos em um modelo de **Dado-como-serviço (DaaS) via Assinatura (SaaS)**. Cl
 
 ## 📸 Demonstração Visual
 
-![Status normal da missão](assets/screenshot_normal.png)
-> *Operação nominal do MobilitySat com telemetria perfeitamente estável.*
+![Inicio](assets/print_inicial.png )
 
-![Alerta crítico com análise da IA](assets/screenshot_alerta.png)
-> *Sistema detectando erro crítico no drift do oscilador e a IA ARIA explicando o impacto nos veículos terrestres.*
+![Modo normal da missão](assets/print_modo_normal.png )
 
-*(Lembre-se de salvar os prints da sua tela dentro da pasta `assets/` com estes nomes)*
+[Modo degradado da missão](assets/print_modo_degradado.png )
+
+![Modo critico da missão](assets/print_modo_critico_alerta_automatico.png )
+
+![Análise da IA](assets/print_analise_ia.png )
+
 
 ---
 

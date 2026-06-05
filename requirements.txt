@@ -18,7 +18,7 @@ python-dotenv==1.2.2
 ollama==0.6.2
 
 
-# --- BÔNUS: Novas bibliotecas para o diferencial do projeto ---
+# Novas bibliotecas para o diferencial do projeto ---
 rich-pyfiglet==2.0.1
 pandas==2.2.3
 matplotlib==3.9.2
