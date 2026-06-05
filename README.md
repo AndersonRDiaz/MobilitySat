@@ -70,7 +70,7 @@ Operamos em um modelo de **Dado-como-serviço (DaaS) via Assinatura (SaaS)**. Cl
 
 ![Modo normal da missão](assets/print_modo_normal.png )
 
-[Modo degradado da missão](assets/print_modo_degradado.png )
+![Modo degradado da missão](assets/print_modo_degradado.png )
 
 ![Modo critico da missão](assets/print_modo_critico_alerta_automatico.png )
 
